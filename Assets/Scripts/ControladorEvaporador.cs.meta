@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 6f614cb4d3bd5f648a1da44e98c4bc1d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - audioSource: {instanceID: 0}
+  - clipArranque: {fileID: 8300000, guid: 6fa0e6326f528ff4e807ef9bde2952bd, type: 3}
+  - clipBomba: {fileID: 8300000, guid: f8fae8c2568225d4094886d0525d46d9, type: 3}
+  - clipEbullicion: {fileID: 8300000, guid: 12d187300ffea014294edeb1023cc60d, type: 3}
+  - clipExtraccion: {fileID: 8300000, guid: bc1d9c791b464c04f8c6775c253d4ce0, type: 3}
+  - clipApagado: {fileID: 8300000, guid: 4f4f099a1fc705a4eb0638ba3c2dea89, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
