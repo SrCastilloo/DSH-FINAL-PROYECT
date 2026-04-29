@@ -37,7 +37,7 @@
 # =========================
 # Packages
 # =========================
-/Packages/packages-lock.json
+#/Packages/packages-lock.json
 
 # Si queréis fijar exactamente versiones de paquetes para todos,
 # comenta la línea de arriba poniendo un # delante.
@@ -81,7 +81,6 @@ crashlytics-build.properties
 # =========================
 # Recordings / captures
 # =========================
-*.mp4
 *.mov
 *.avi
 
@@ -97,3 +96,6 @@ crashlytics-build.properties
 # If using Android local config
 # =========================
 local.properties
+
+
+
