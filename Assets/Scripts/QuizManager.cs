@@ -21,8 +21,10 @@ public class PreguntaData
 
 public class QuizManager : MonoBehaviour
 {
-    [Header("Archivo JSON")]
-    public TextAsset jsonFile; // Arrastra aquí tu preguntas.json
+    [Header("Archivos JSON de Idiomas")]
+    public TextAsset jsonEspañol;
+    public TextAsset jsonPolaco;
+    public TextAsset jsonIngles;
 
     [Header("Paneles de UI")]
     public GameObject panelPregunta;
@@ -60,16 +62,9 @@ public class QuizManager : MonoBehaviour
             textosBotones[i] = botonesRespuestas[i].GetComponentInChildren<TextMeshProUGUI>();
         }
 
-        CargarJSON();
-        MostrarPreguntaActual();
+        CambiarIdioma(0); // Cargar el idioma español por defecto
     }
 
-    void CargarJSON()
-    {
-        // Deserializar el JSON usando Newtonsoft
-        todasLasPreguntas = JsonConvert.DeserializeObject<Dictionary<string, PreguntaData>>(jsonFile.text);
-        listaClavesPreguntas = new List<string>(todasLasPreguntas.Keys);
-    }
 
     public void MostrarPreguntaActual()
     {
@@ -151,6 +146,39 @@ public class QuizManager : MonoBehaviour
             int randomIndex = Random.Range(i, lista.Count);
             lista[i] = lista[randomIndex];
             lista[randomIndex] = temp;
+        }
+    }
+
+    // Función que llamaremos desde los botones: 0 = ESP, 1 = POL, 2 = ENG
+    public void CambiarIdioma(int indiceIdioma)
+    {
+        TextAsset jsonSeleccionado = jsonEspañol; // Español por defecto
+
+        switch (indiceIdioma)
+        {
+            case 0:
+                jsonSeleccionado = jsonEspañol;
+                Debug.Log("Idioma cambiado a ESPAÑOL");
+                break;
+            case 1:
+                jsonSeleccionado = jsonPolaco;
+                Debug.Log("Idioma cambiado a POLACO");
+                break;
+            case 2:
+                jsonSeleccionado = jsonIngles;
+                Debug.Log("Idioma cambiado a INGLÉS");
+                break;
+        }
+
+        // Volvemos a deserializar el JSON con el idioma elegido
+        todasLasPreguntas = JsonConvert.DeserializeObject<Dictionary<string, PreguntaData>>(jsonSeleccionado.text);
+        listaClavesPreguntas = new List<string>(todasLasPreguntas.Keys);
+
+        // Si el usuario cambia el idioma MIENTRAS está jugando (el panel de pregunta está activo), 
+        // recargamos los textos para que se actualicen inmediatamente al cerrar ajustes.
+        if (panelPregunta.activeInHierarchy)
+        {
+            MostrarPreguntaActual();
         }
     }
 }
